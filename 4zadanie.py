@@ -1,56 +1,22 @@
-price = [22, 12, 52.52, 61.52, 132.2, 61, 6.2]
+class ComplexNumber:
+    def __init__(self, a, b, *args):
+        self.a = a
+        self.b = b
+        self.z = 'a + b * i'
 
-price_id = id(price)
-print(id(price))
+    def __add__(self, other):
+        print(f'Сумма z1 и z2 равна')
+        return f'z = {self.a + other.a} + {self.b + other.b} * i'
 
-for last_price, num in enumerate(price):
+    def __mul__(self, other):
+        print(f'Произведение z1 и z2 равно')
+        return f'z = {self.a * other.a - (self.b * other.b)} + {self.b * other.a} * i'
 
-    new_price = str(f"{float(num):.2f}").split(".")
+    def __str__(self):
+        return f'z = {self.a} + {self.b} * i'
 
-    if last_price == len(price) - 1:
-        perevod_na_stroky = "\n"
-
-    print(f"{new_price[0]} руб {new_price[1]} коп")
-
-
-price.sort()
-print(price)
-print(id(price))
-
-
-
-copy_price = price.copy()
-copy_price.sort(reverse=True)
-
-print(copy_price)
-print(id(copy_price))
-
-new_copy_price = copy_price[0: 5]
-for last_price in new_copy_price:
-    if last_price != new_copy_price[len(new_copy_price) - 1]:
-        print(f'{last_price}')
-    else:
-        print(last_price)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+z_1 = ComplexNumber(1, -2)
+z_2 = ComplexNumber(3, 4)
+print(z_1)
+print(z_1 + z_2)
+print(z_1 * z_2)
